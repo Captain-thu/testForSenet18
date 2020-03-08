@@ -57,6 +57,9 @@ if __name__ == "__main__":
         with open("log.txt", "w")as f2:
             for epoch in range(pre_epoch, EPOCH):
                 print('\nEpoch: %d' % (epoch + 1))
+                if epoch == 50:
+                    for p in optimizer.param_groups:
+                        p['lr'] *= 0.1
                 net.train()
                 sum_loss = 0.0
                 correct = 0.0
